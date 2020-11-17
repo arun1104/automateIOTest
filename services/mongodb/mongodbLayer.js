@@ -57,7 +57,7 @@ class DBLayer {
       logger.info('Connection string', connectionString);
       await this.Mongoose.connect(connectionString, {dbName: process.env.dbName, useNewUrlParser: true, useUnifiedTopology: true });
       let model = this.Mongoose.model(options.collection);
-      let doc = await model.find(options.query, {_id: 0}).lean();
+      let doc = await model.find(options.query, {__v: 0}).lean();
       return doc;
     } catch (err){
       logger.error(err);

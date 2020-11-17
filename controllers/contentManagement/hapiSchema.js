@@ -26,4 +26,17 @@ const createContentSchema = Joi.object({
     .required(),
 });
 
-module.exports = {createContentSchema};
+const moveContentSchema = Joi.object({
+  contentId: Joi.string()
+    .trim()
+    .min(1)
+    .max(50)
+    .required(),
+  context: Joi.string()
+    .trim()
+    .min(1)
+    .max(50)
+    .required(),
+});
+
+module.exports = {createContentSchema, moveContentSchema};

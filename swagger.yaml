@@ -51,10 +51,6 @@ paths:
           in: header
           type: 'string'
           required: true
-        - name: userId
-          in: query
-          required: true
-          type: 'string'
         - name: context
           in: query
           required: true
@@ -148,7 +144,7 @@ definitions:
   changeFileContext:
     type: "object"
     properties:
-      id:
+      contentId:
         type: "string"
       context:
         type: "string"

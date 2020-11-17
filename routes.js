@@ -5,4 +5,6 @@ const contentHandler = require('./controllers/contentManagement/contentManagemen
 module.exports = {
   login: authHandler.loginRequesthandler,
   createContent: contentHandler.createContentHandler,
+  getContents: contentHandler.getContentsHandler,
+  changeFileContext: contentHandler.moveContentsHandler,
 };
