@@ -23,7 +23,7 @@ File or Folder User with full permissions for read/write/modify/delete his or he
     1. APP home screen - View all the files and folders owned by a user - Context - Home screen or Root
        1.1 - Solution
              Rest API to get all files of a user
-             GET -> /users/files?userId='userId'&folder='root'
+             GET -> /users/files?userId='userId'&context='root'
              Response: Type JSON
              [{
                 id: "123",
@@ -42,7 +42,7 @@ File or Folder User with full permissions for read/write/modify/delete his or he
     2. View all files inside a folder
      2.1 - Solution
              Rest API to get all files in a folder
-             GET -> /users/files?userId='userId'&folder='folderId'
+             GET -> /users/files?userId='userId'&context='folderId'
              Response: Type JSON
              [{
                 name: "",
@@ -56,4 +56,7 @@ File or Folder User with full permissions for read/write/modify/delete his or he
                 owner:"",
                 parent:"folderId"
              }]
-
+    3. User login
+    4. Create file
+    5. Create folder
+    6. Move file from one folder to another folder

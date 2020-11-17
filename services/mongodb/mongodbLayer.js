@@ -101,7 +101,14 @@ class DBLayer {
       return result;
     } catch (err) {
       logger.error(err);
-      throw (new Error(' DB error'));
+      let errObj;
+      if (err.code === constants.MONGO_DB_DUPLICATE_KEY_ERROR_CODE){
+        errObj = {status: constants.HTTP_STATUS_BAD_REQUEST, message: constants.CONTENT_DUPLICATE_ERROR};
+        throw errObj;
+      } else {
+        errObj = {message: constants.UNEXPECTED_ERROR, status: constants.HTTP_STATUS_INTERNAL_SERVER_ERROR};
+        throw errObj;
+      }
     }
   }
 

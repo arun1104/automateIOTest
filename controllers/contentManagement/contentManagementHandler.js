@@ -74,15 +74,22 @@ class ContentManagement{
     const logger = new Logger(correlationId, 'moveContentsHandler-ContentManagement', 'moveContentsHandler');
     logger.info('Entry');
     try {
-      // add validation for nested folder logic
+      // Cannot have nested folders
       const reqBody = await moveContentSchema.validateAsync(req.body);
       let options = {correlationId,
         collection: constants.CONTENT_COLLECTION,
         query: {_id: mongoose.Types.ObjectId(req.body.contentId)},
         data: {context: reqBody.context},
       };
-      let response = await this.dbLayer.updateDoc(options, correlationId, constants.CONTENT_COLLECTION);
-      res.status(constants.HTTP_STATUS_OK).send(response);
+
+      let currentContent = await this.dbLayer.findOne(options);
+      if (currentContent.contentType === constants.FILE){
+        let response = await this.dbLayer.updateDoc(options, correlationId, constants.CONTENT_COLLECTION);
+        res.status(constants.HTTP_STATUS_OK).send(response);
+      } else {
+        res.status(constants.HTTP_STATUS_BAD_REQUEST).send({ message: constants.NESTED_FOLDER_ERROR });
+      }
+
     } catch (err) {
       if (err.status && err.message) {
         res.status(err.status).send({ message: err.message });

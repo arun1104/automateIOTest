@@ -33,4 +33,6 @@ module.exports = {
   FILES_COLLECTION: 'files',
   CONTENT_DUPLICATE_ERROR: 'Duplicate error',
   SWAGGER_SECURITY_ATTRIBUTE: 'automateio_auth',
+  FILE: 'file',
+  NESTED_FOLDER_ERROR: 'Folder cannot be moved.Only file can be moved from one file to another',
 };
