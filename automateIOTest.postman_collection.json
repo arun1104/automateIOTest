@@ -1,0 +1,288 @@
+{
+	"info": {
+		"_postman_id": "f34f4dab-4d86-4186-9cf0-75a0b95f7162",
+		"name": "automateIOTest",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "login using username and password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4fe28cbb-871d-4f28-85cb-cabeaaf7b74b",
+						"exec": [
+							"pm.test(\"set token\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    if(jsonData && jsonData.token)\r",
+							"    pm.environment.set(\"token\", jsonData.token);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"userId\":\"test_user2\",\n    \"password\":\"automateIO@(#)\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create a folder",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4fe28cbb-871d-4f28-85cb-cabeaaf7b74b",
+						"exec": [
+							"pm.test(\"set token\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    if(jsonData && jsonData.token)\r",
+							"    pm.environment.set(\"managementToken\", jsonData.token);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"js code\",\n  \"contentType\": \"folder\",\n  \"context\": \"root\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/users/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"files"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get files and folders",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4fe28cbb-871d-4f28-85cb-cabeaaf7b74b",
+						"exec": [
+							"pm.test(\"set token\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    if(jsonData && jsonData.token)\r",
+							"    pm.environment.set(\"managementToken\", jsonData.token);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/users/files?context=5fb34cfe3092824a70612407",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"files"
+					],
+					"query": [
+						{
+							"key": "context",
+							"value": "5fb34cfe3092824a70612407"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "move a file",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4fe28cbb-871d-4f28-85cb-cabeaaf7b74b",
+						"exec": [
+							"pm.test(\"set token\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    if(jsonData && jsonData.token)\r",
+							"    pm.environment.set(\"managementToken\", jsonData.token);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"contentId\":\"5fb3420eb4edcb1c687a6fe0\",\r\n\"context\":\"5fb34cfe3092824a70612407\"\r\n} ",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/users/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"files"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create a file",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "1ee423cf-580f-46a8-a4dd-ea0304cb8d9c",
+						"exec": [
+							"pm.test(\"set token\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    if(jsonData && jsonData.token)\r",
+							"    pm.environment.set(\"managementToken\", jsonData.token);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "{{token}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"js code\",\n  \"contentType\": \"file\",\n  \"context\": \"root\",\n  \"format\": \"jpeg\",\n  \"fileId\": \"hxbhjgdybeue\"\n}",
+					"options": {
+						"raw": {}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/v1/users/files",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"v1",
+						"users",
+						"files"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
