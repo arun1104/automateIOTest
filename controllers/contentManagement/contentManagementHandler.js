@@ -1,7 +1,6 @@
 'use strict';
 const constants = require('../../utils/constants');
 const Logger = require('../../utils/logger');
-const commonUtils = require('../../utils/common');
 const dbLayer = require('../../services/mongodb/mongodbLayer');
 const { createContentSchema } = require('./hapiSchema');
 
@@ -22,7 +21,7 @@ class ContentManagement{
     logger.info('Entry');
     try {
       const reqBody = await createContentSchema.validateAsync(req.body);
-      reqBody.createdBy = req.userId;
+      reqBody.createdBy = req.name;
       reqBody.owner = req.userId;
       let response = await this.dbLayer.createDoc({data: reqBody}, correlationId, constants.CONTENT_COLLECTION);
       this.formatResponse(response);

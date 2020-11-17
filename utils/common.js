@@ -19,13 +19,14 @@ class CommonUtility{
     return decoded;
   }
 
-  createJwtToken(grps, userId) {
+  createJwtToken(grps, userId, userName) {
     const privateKey = fs.readFileSync(filePath);
     let jwtToken = jwt.sign({
       iat: Math.floor(Date.now() / 1000) - 30,
       exp: Math.floor(Date.now() / 1000) + constants.TOKEN_VALIDITY,
       roles: grps,
       userId,
+      name: userName,
     }, privateKey, { algorithm: constants.JWT_SIGNING_ALGORITHM });
     return jwtToken;
   }

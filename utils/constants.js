@@ -20,6 +20,7 @@ module.exports = {
   PRIVATE_KEY_FILE: 'private',
   USERS_COLLECTION: 'users',
   TEST_USER_ID_HASH: '9da1f8e0aecc9d868bad115129706a77',
+  TEST_USER2_ID_HASH: '15cb90e2a6318b3dcbb4a09ab0a1153d',
   TEST_USER_PASS_HASH: 'd1e3ed811c465232e82a40911390b941',
   JWT_SIGNING_ALGORITHM: 'RS256',
   HASHING_ALGORITHM: 'md5',
@@ -31,4 +32,5 @@ module.exports = {
   CONTENT_COLLECTION: 'contents',
   FILES_COLLECTION: 'files',
   CONTENT_DUPLICATE_ERROR: 'Duplicate error',
+  SWAGGER_SECURITY_ATTRIBUTE: 'automateio_auth',
 };

@@ -69,7 +69,9 @@ paths:
       summary: 'create a content'
       operationId: 'createContent'
       deprecated: false
-      security: []
+      security:
+      - automateio_auth:
+        - "basic_user"
       produces:
         - application/json
       parameters:
@@ -92,7 +94,9 @@ paths:
       summary: 'remove a content'
       operationId: 'deleteContent'
       deprecated: false
-      security: []
+      security:
+      - automateio_auth:
+        - "basic_user"
       produces:
         - application/json
       parameters:
@@ -115,7 +119,9 @@ paths:
       summary: 'move a content'
       operationId: 'changeFileContext'
       deprecated: false
-      security: []
+      security:
+      - automateio_auth:
+        - "basic_user"
       produces:
         - application/json
       parameters:
