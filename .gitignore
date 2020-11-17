@@ -1,0 +1,13 @@
+.nyc_output
+.env
+coverage
+mochawesome-report
+node_modules/
+node_modules
+/node_modules
+server/node_modules
+package-lock.json
+test/unit/api/node_modules
+.vscode/
+.env
+.scannerwork/

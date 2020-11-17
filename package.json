@@ -1,0 +1,53 @@
+{
+  "name": "automate_io_document_management_service",
+  "version": "1.0.0",
+  "description": "automate_io_document_management_service",
+  "main": "app.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-correlation-id": "^1.3.1",
+    "joi": "^17.3.0",
+    "js-yaml": "^3.14.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.10.14",
+    "morgan": "^1.10.0",
+    "path": "^0.12.7",
+    "swagger-tools": "^0.10.4",
+    "uuid": "^8.3.1",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "mocha": "^8.1.3",
+    "mochawesome": "^6.1.1",
+    "nyc": "^15.1.0",
+    "sinon": "^9.2.0",
+    "sonarqube-scanner": "^2.7.0"
+  },
+  "scripts": {
+    "test": "npm run unit-tests && echo 'Done.'",
+    "unit-tests": "node ./node_modules/mocha/bin/mocha --timeout 10000 --recursive ./test/unit/",
+    "coverage": "nyc --reporter=html --reporter=lcov mocha --recursive ./test/unit --reporter mochawesome --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arun1104/automateIOTest"
+  },
+  "keywords": [
+    "files",
+    "folders"
+  ],
+  "author": "arunrajeevan1104",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/arun1104/automateIOTest"
+  },
+  "homepage": "https://github.com/arun1104/automateIOTest#readme"
+}
